@@ -1,6 +1,7 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
+import "./App.css";
 
 function App() {
   const [name, setName] = useState("");
@@ -138,16 +139,17 @@ function App() {
       </div>
 
       <div className="userCardsCompilation text-white">
-        <div className="card border border-gray-500 rounded-md bg-[#1f1f1f]">
-          <h3 className="">{name}</h3>
-          <h4 className="text-[#c5f82a]">{nationality}</h4>
-          <p>{bio}</p>
-          <div className="flex flex-col items-center">
-            <button className="border rounded-md bg-[#333333] px-6 py-2">Github</button>
-            <button className="border rounded-md bg-[#333333] px-6 py-2">Frontend Mentor</button>
-            <button className="border rounded-md bg-[#333333] px-6 py-2">LinkedInd</button>
-            <button className="border rounded-md bg-[#333333] px-6 py-2">X</button>
-            <button className="border rounded-md bg-[#333333] px-6 py-2">Instagram</button>
+        <div className="card border border-gray-500 rounded-md bg-[#1f1f1f] flex flex-col ">
+          <img className="rounded-full" src="https://picsum.photos/200" alt="" />
+          <h3 className="">Gerardo Nuncio</h3>
+          <h4 className="text-[#c5f82a]">Mexicano</h4>
+          <p className=" py-4">Frontend Developer</p>
+          <div className="flex flex-col gap-3">
+            <button className=" rounded-md bg-[#333333] px-6 py-2">Github</button>
+            <button className=" rounded-md bg-[#333333] px-6 py-2">Frontend Mentor</button>
+            <button className=" rounded-md bg-[#333333] px-6 py-2">LinkedInd</button>
+            <button className=" rounded-md bg-[#333333] px-6 py-2">X</button>
+            <button className=" rounded-md bg-[#333333] px-6 py-2">Instagram</button>
           </div>
         </div>
       </div>
