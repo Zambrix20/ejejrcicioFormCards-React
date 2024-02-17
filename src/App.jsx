@@ -30,28 +30,32 @@ function App() {
 
 
   const gitHubHandler = (e) => {
-    setGitHub(true)
-    if (e.target.value === true) {
+    setGitHub(e.target.checked)
+    if (e.target.checked === true) {
       setButtons([...buttons, "GitHub"])
     }
   };
   const frontendMHandler = (e) => {
-    if (e.target.value === true) {
+    setFrontendM(e.target.checked)
+    if (e.target.checked === true) {
       setButtons([...buttons, "Frontend Mentor"])
     }
   };
   const linkedInHandler = (e) => {
-    if (e.target.value === true) {
+    setlinkedin(e.target.checked)
+    if (e.target.checked === true) {
       setButtons([...buttons, "LinkedIn"])
     }
   };
   const xHandler = (e) => {
-    if (e.target.value === true) {
+    setX(e.target.checked)
+    if (e.target.checked === true) {
       setButtons([...buttons, "X"])
     }
   };
   const instagramHandler = (e) => {
-    if (e.target.value === true) {
+    setInstagram(e.target.checked)
+    if (e.target.checked === true) {
       setButtons([...buttons, "Instagram"])
     }
   };
@@ -64,7 +68,7 @@ function App() {
     const newUserInput = [
       name,
       nationality,
-      bio
+      bio, buttons
     ];
     setNewUser([...newUser, newUserInput]);
   };

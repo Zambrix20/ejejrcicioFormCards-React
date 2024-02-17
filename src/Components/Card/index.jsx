@@ -2,7 +2,6 @@ import { useState } from "react";
 import NewButton from '../Button/index.jsx';
 
 function NewCard({ userInfo, buttonsInfo }) {
-    console.log(buttonsInfo)
     console.log("User info", userInfo)
     const { name,
         nationality,
