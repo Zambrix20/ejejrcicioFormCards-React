@@ -1,7 +1,6 @@
 import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
-import "./App.css";
 
 function App() {
   const [name, setName] = useState("");
@@ -55,7 +54,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col container w-96 mx-4 my-4">
       <h4>"Llena tus datos"</h4>
       <div className="formContainer ">
         <form action="" className="flex flex-col gap-3">
@@ -138,12 +137,15 @@ function App() {
         </button>
       </div>
 
-      <div className="userCardsCompilation text-white">
-        <div className="card border border-gray-500 rounded-md bg-[#1f1f1f] flex flex-col ">
-          <img className="rounded-full" src="https://picsum.photos/200" alt="" />
-          <h3 className="">Gerardo Nuncio</h3>
-          <h4 className="text-[#c5f82a]">Mexicano</h4>
-          <p className=" py-4">Frontend Developer</p>
+      <div className="userCardsCompilation flex text-white my-4">
+        <div className="card border border-gray-500 rounded-md bg-[#1f1f1f] flex flex-col w-96 px-4 py-8">
+          <div className="userInfo flex flex-col items-center">
+
+            <img className="rounded-full" src="https://picsum.photos/200" alt="" />
+            <h3 className="">Gerardo Nuncio</h3>
+            <h4 className="text-[#c5f82a]">Mexicano</h4>
+            <p className=" py-4">Frontend Developer</p>
+          </div>
           <div className="flex flex-col gap-3">
             <button className=" rounded-md bg-[#333333] px-6 py-2">Github</button>
             <button className=" rounded-md bg-[#333333] px-6 py-2">Frontend Mentor</button>
