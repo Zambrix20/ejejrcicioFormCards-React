@@ -1,22 +1,19 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import NewCard from './Components/Card/index.jsx'
+import NewCard from "./Components/Card/index.jsx";
 
 function App() {
   const [name, setName] = useState("");
   const [nationality, setNationality] = useState("");
   const [bio, setBio] = useState("");
 
-  const [github, setGitHub] = useState(false)
-  const [frontendM, setFrontendM] = useState(false)
-  const [linkedIn, setlinkedin] = useState(false)
-  const [x, setX] = useState(false)
-  const [instagram, setInstagram] = useState(false)
+  const [github, setGitHub] = useState(false);
+  const [frontendM, setFrontendM] = useState(false);
+  const [linkedIn, setlinkedin] = useState(false);
+  const [x, setX] = useState(false);
+  const [instagram, setInstagram] = useState(false);
 
   const [newUser, setNewUser] = useState([]);
-  const [buttons, setButtons] = useState([])
-
+  const [buttons, setButtons] = useState([]);
 
   const nameHandler = (e) => {
     setName(e.target.value);
@@ -28,49 +25,62 @@ function App() {
     setBio(e.target.value);
   };
 
-
-  const gitHubHandler = (e) => {
-    setGitHub(e.target.checked)
+  /*const gitHubHandler = (e) => {
+    setGitHub(e.target.checked);
     if (e.target.checked === true) {
-      setButtons([...buttons, "GitHub"])
+      setButtons([...buttons, "GitHub"]);
     }
   };
   const frontendMHandler = (e) => {
-    setFrontendM(e.target.checked)
+    setFrontendM(e.target.checked);
     if (e.target.checked === true) {
-      setButtons([...buttons, "Frontend Mentor"])
+      setButtons([...buttons, "Frontend Mentor"]);
     }
   };
   const linkedInHandler = (e) => {
-    setlinkedin(e.target.checked)
+    setlinkedin(e.target.checked);
     if (e.target.checked === true) {
-      setButtons([...buttons, "LinkedIn"])
+      setButtons([...buttons, "LinkedIn"]);
     }
   };
   const xHandler = (e) => {
-    setX(e.target.checked)
+    setX(e.target.checked);
     if (e.target.checked === true) {
-      setButtons([...buttons, "X"])
+      setButtons([...buttons, "X"]);
     }
   };
   const instagramHandler = (e) => {
-    setInstagram(e.target.checked)
+    setInstagram(e.target.checked);
     if (e.target.checked === true) {
-      setButtons([...buttons, "Instagram"])
+      setButtons([...buttons, "Instagram"]);
+    }
+  };
+  */
+
+  const checkboxHandler = (value) => {
+    // si el valor no esta en el array de botones,
+    if (!buttons.includes(value)) {
+      // agrega el valor al array de botones, el prevButtons es el array de botones actual y el ...prevButtons es para que no se sobreescriba el array de botones con el nuevo valor,
+      // ademas de que el valor se agrega al final del array.
+      setButtons((prevButtons) => [...prevButtons, value]); // setButtons([...buttons, value]);
+    } else {
+      // si el valor ya esta en el array de botones, lo remueve del array de botones, el prevButtons es el array de botones actual y el ...prevButtons es para que no se sobreescriba el array de botones con el nuevo valor,
+      // ademas de que el valor se agrega al final del array.
+      // El filter recorre el array de botones y remueve el valor que ya esta en el array de botones, por eso el button !== value que es para que no se agregue el valor que ya esta en el array de botones.
+      setButtons((prevButtons) =>
+        prevButtons.filter((button) => button !== value)
+      );
     }
   };
 
-
-
-
-
   const saveUser = () => {
-    const newUserInput = [
-      name,
-      nationality,
-      bio, buttons
-    ];
-    setNewUser([...newUser, newUserInput]);
+    const user = {
+      name: name,
+      nationality: nationality,
+      bio: bio,
+      buttons: buttons,
+    };
+    setNewUser([...newUser, user]);
   };
 
   return (
@@ -104,7 +114,8 @@ function App() {
                 name=""
                 id=""
                 value="github"
-                onChange={gitHubHandler}
+                // onChange={githubHandler}
+                onChange={() => checkboxHandler("Github")}
               />
               <label>Github</label>
             </div>
@@ -114,7 +125,8 @@ function App() {
                 name=""
                 id=""
                 value="Frontend Mentor"
-                onChange={frontendMHandler}
+                // onChange={frontendMHandler}
+                onChange={() => checkboxHandler("Frontend Mentor")}
               />
               <label>Frontend Mentor</label>
             </div>
@@ -124,7 +136,8 @@ function App() {
                 name=""
                 id=""
                 value="LinkedIn"
-                onChange={linkedInHandler}
+                // onChange={linkedInHandler}
+                onChange={() => checkboxHandler("LinkedIn")}
               />
               <label>LinkedIn</label>
             </div>
@@ -134,16 +147,17 @@ function App() {
                 name=""
                 id=""
                 value="X"
-                onChange={xHandler}
+                // onChange={xHandler}
+                onChange={() => checkboxHandler("X")}
               />
               <label>X</label>
             </div>
             <div className="flex items-start -center">
               <input
                 type="checkbox"
-
                 value="Instagram"
-                onChange={instagramHandler}
+                // onChange={instagramHandler}
+                onChange={() => checkboxHandler("Instagram")}
               />
               <label>Instagram</label>
             </div>
@@ -159,16 +173,15 @@ function App() {
       </div>
 
       <div className="userCardsCompilation text-white my-4 flex flex-wrap">
-
         {newUser.map((user, index) => {
-          console.log(buttons)
+          // console.log("newUser", newUser);
+          console.log(buttons);
+          // console.log("user", user);
+          // return <NewCard userInfo={user} buttonsInfo={buttons} key={index} />;
           return (
-            <NewCard userInfo={newUser} buttonsInfo={buttons} key={index} />
-          )
-
+            <NewCard userInfo={user} buttonsInfo={user.buttons} key={index} />
+          );
         })}
-
-
       </div>
     </div>
   );
